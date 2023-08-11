@@ -1,0 +1,24 @@
+id: 807
+name: headstart-demo
+type: bedrock
+environments:
+  production:
+    architecture: arm64
+    build:
+      - 'COMPOSER_MIRROR_PATH_REPOS=1 composer install --no-dev'
+    database:
+      server: ymir
+      name: headstart_production
+    deployment: image
+    gateway: false
+  staging:
+    architecture: arm64
+    build:
+      - 'COMPOSER_MIRROR_PATH_REPOS=1 composer install'
+    cron: false
+    database:
+      server: ymir
+      name: headstart_staging
+    deployment: image
+    gateway: false
+    warmup: false
